@@ -1,0 +1,19 @@
+{
+  "name": "@ensdomains/tldclaims",
+  "version": "1.0.0",
+  "description": "A smart contract for issuing NFT claims to gTLDs on ENS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@ensdomains/root": "^0.2.0",
+    "@ensdomains/ens": "^0.6.0",
+    "@openzeppelin/contracts": "^4.0.0"
+  },
+  "devDependencies": {
+    "hardhat": "^2.1.2"
+  }
+}
