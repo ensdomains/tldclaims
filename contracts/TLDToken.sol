@@ -20,7 +20,7 @@ contract TLDToken is ERC721, Ownable {
         mintTLDs(preloads);
     }
 
-    function mintTLDs(TokenInfo[] memory tlds) public onlyOwner {
+    function mintTLDs(TokenInfo[] memory tlds) public {
         for(uint i = 0; i < tlds.length; i++) {
             TokenInfo memory tld = tlds[i];
             mintTLD(tld.name, tld.owner, tld.image);
