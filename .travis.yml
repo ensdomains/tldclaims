@@ -1,0 +1,13 @@
+sudo: required
+dist: trusty
+language: node_js
+node_js:
+  - "10"
+env:
+  - TASK=test
+matrix:
+  fast_finish: true
+script:
+  - npm run $TASK
+notifications:
+  email: false
