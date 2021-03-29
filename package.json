@@ -4,16 +4,22 @@
   "description": "A smart contract for issuing NFT claims to gTLDs on ENS",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "hardhat test"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@ensdomains/root": "^0.2.0",
     "@ensdomains/ens": "^0.6.0",
-    "@openzeppelin/contracts": "^4.0.0"
+    "@ensdomains/root": "^0.2.0",
+    "@openzeppelin/contracts": "^4.0.0",
+    "eth-ens-namehash": "^2.0.8"
   },
   "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.0.2",
+    "@nomiclabs/hardhat-waffle": "^2.0.1",
+    "chai": "^4.3.4",
+    "ethereum-waffle": "^3.3.0",
+    "ethers": "^5.0.32",
     "hardhat": "^2.1.2"
   }
 }

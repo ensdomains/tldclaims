@@ -35,7 +35,8 @@ contract TLDToken is ERC721, Ownable {
     }
 
     function tokenURI(uint256 tokenId) public override view returns(string memory) {
-        return string(abi.encodePacked('data:application/json,{"name":".', names[tokenId], '", image: "', images[tokenId], '"}'));
+        require(_exists(tokenId), "ERC721Metadata: URI query for nonexistent token");
+        return string(abi.encodePacked('data:application/json,{"name":".', names[tokenId], '", "image": "', images[tokenId], '"}'));
     }
 
     function setImage(uint256 tokenId, string calldata image) external {
