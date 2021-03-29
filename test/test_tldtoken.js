@@ -68,6 +68,12 @@ describe("TLDToken", () => {
             await expect(tokenNonOwner.mintTLD('link', signers[2].address, 'https://picsum.photos/700'))
                 .to.be.reverted;
         });
+
+        it("should not allow minting a token that already exists", async () => {
+            await token.mintTLD('test', signers[1].address, 'https://picsum.photos/700');
+            await expect(token.mintTLD('test', signers[1].address, 'https://picsum.photos/700'))
+                .to.be.reverted;
+        });
     });
 
     describe("tokenURI", () => {
@@ -171,6 +177,13 @@ describe("TLDToken", () => {
             const id = getTokenId(PRELOADS[0].name);
             const token2 = token.connect(signers[2]);
             await expect(token2.burn(id)).to.be.reverted;
+        });
+
+        it("should allow minting a token that has been burned", async () => {
+            const id = getTokenId(PRELOADS[0].name);
+            await token.burn(id);
+            await expect(token.mintTLD(PRELOADS[0].name, signers[1].address, PRELOADS[0].image))
+                .to.emit(token, 'Transfer');
         });
     });
 });
