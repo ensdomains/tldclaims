@@ -27,7 +27,7 @@ describe("TLDToken", () => {
         root = await Root.deploy(ens.address);
         await root.deployed();
         await ens.setOwner('0x' + '00'.repeat(32), root.address);
-        token = await TLDToken.deploy(root.address, PRELOADS.map((p) => Object.assign({owner: signers[1].address}, p)));
+        token = await TLDToken.deploy(root.address, PRELOADS.map((p) => Object.assign({owner: signers[1].address}, p)), signers[0].address);
         await token.deployed();
         await root.setController(token.address, true);
         tokenOwner = token.connect(signers[1]);

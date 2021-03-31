@@ -15,9 +15,10 @@ contract TLDToken is ERC721, Ownable {
     mapping(uint256=>string) public names;
     Root public root;
 
-    constructor(address _root, TokenInfo[] memory preloads) ERC721("ENS Top-level domains", "TLD") {
+    constructor(address _root, TokenInfo[] memory preloads, address _owner) ERC721("ENS Top-level domains", "TLD") {
         root = Root(_root);
         mintTLDs(preloads);
+        transferOwnership(_owner);
     }
 
     function mintTLDs(TokenInfo[] memory tlds) public {
