@@ -3,9 +3,12 @@ const hre = require("hardhat");
 const { getDeploymentData, TLDTOKEN_TX_HASH } = require("./preloads");
 
 async function main() {
-    const provider = (await ethers.getSigners())[0].provider;
-    const txdata = await getDeploymentData();
-    const tx = await provider.getTransaction(TLDTOKEN_TX_HASH);
+    const TLDToken = await ethers.getContractFactory("TLDToken");
+
+    const constructorArgs = await getDeploymentData();
+    const txdata = TLDToken.getDeployTransaction(...constructorArgs);
+
+    const tx = await ethers.provider.getTransaction(TLDTOKEN_TX_HASH);
     if(tx.data == txdata.data) {
         console.log(`TLDToken was deployed correctly at ${tx.creates}`);
     } else {

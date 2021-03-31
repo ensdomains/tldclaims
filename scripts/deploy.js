@@ -3,10 +3,12 @@ const hre = require("hardhat");
 const { getDeploymentData } = require("./preloads");
 
 async function main() {
-    const txdata = await getDeploymentData();
-    const signers = await ethers.getSigners();
-    const tx = await signers[0].sendTransaction(txdata);
+    const TLDToken = await ethers.getContractFactory("TLDToken");
+    const constructorArgs = await getDeploymentData();
+
+    const tx = (await TLDToken.deploy(...constructorArgs)).deployTransaction;
     console.log(`Creation transaction sent with hash ${tx.hash}`);
+
     const receipt = await tx.wait();
     console.log("Transaction mined!");
 }

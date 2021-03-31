@@ -54,8 +54,7 @@ async function getPreloads() {
 
 async function getDeploymentData() {
     const preloads = await getPreloads();
-    const TLDToken = await ethers.getContractFactory("TLDToken");
-    return TLDToken.getDeployTransaction(ROOT_ADDRESS, preloads, MULTISIG_ADDRESS);
+    return [ROOT_ADDRESS, preloads, MULTISIG_ADDRESS];
 }
 
 module.exports = { getDeploymentData, TLDTOKEN_TX_HASH };
