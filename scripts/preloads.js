@@ -33,7 +33,7 @@ const PRELOADS = [
 
 const ROOT_ADDRESS = "0xaB528d626EC275E3faD363fF1393A41F581c5897";
 const MULTISIG_ADDRESS = "0xCF60916b6CB4753f58533808fA610FcbD4098Ec0";
-const TLDTOKEN_TX_HASH = "";
+const TLDTOKEN_TX_HASH = "0x85a17536e5e0d43fb30e15e0453031a38cadf23fa24538405159431173ba2f0d";
 
 async function getAddress(tld) {
     const response = await fetch(`https://cloudflare-dns.com/dns-query?name=_ens.nic.${tld}&type=TXT&ct=application/dns-json`);
